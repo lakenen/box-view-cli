@@ -1,0 +1,46 @@
+{
+  "name": "box-view-cli",
+  "version": "0.0.0",
+  "description": "A CLI for Box View API",
+  "author": "Cameron Lakenen <lakenen@box.com>",
+  "homepage": "http://github.com/lakenen/box-view-cli",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lakenen/box-view-cli.git"
+  },
+  "license": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/lakenen/box-view-cli/blob/master/LICENSE"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/*"
+  },
+  "keywords": [
+    "box",
+    "box view",
+    "box view api",
+    "view api",
+    "crocodoc",
+    "viewer.js",
+    "cli"
+  ],
+  "bin": {
+    "box-view": "bin/box-view"
+  },
+  "preferGlobal": true,
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "box-view": "^0.1.5",
+    "commander": "^2.2.0",
+    "open": "0.0.5"
+  },
+  "devDependencies": {
+    "tape": "^2.13.2",
+    "nock": "^0.36.2"
+  }
+}
