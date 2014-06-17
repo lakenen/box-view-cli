@@ -18,8 +18,8 @@ function readJSON(file) {
 }
 
 function getVersion() {
-    var cliVersion = readJSON(path.resolve('package.json')).version,
-        boxViewVersion = readJSON(path.resolve('node_modules/box-view/package.json')).version;
+    var cliVersion = readJSON(__dirname + '/package.json').version,
+        boxViewVersion = readJSON(__dirname + '/node_modules/box-view/package.json').version;
     return 'box-view-cli@' + cliVersion + '\nbox-view@' + boxViewVersion;
 }
 

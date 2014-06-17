@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/lakenen/box-view-cli.png?branch=master)](https://travis-ci.org/lakenen/box-view-cli)
-
 # Box View API CLI
 
 A CLI for the [Box View API](http://developers.box.com/view/)
