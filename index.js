@@ -24,9 +24,20 @@ function getVersion() {
 }
 
 function init() {
+    var client;
     prog.token = prog.token || process.env.BOX_VIEW_API_TOKEN;
     debug('started with token %s', prog.token);
-    prog.client = BoxView.createClient(prog.token);
+    client = BoxView.createClient(prog.token);
+    if (process.env.BOX_VIEW_DOCUMENTS_URL) {
+        client.documentsURL = process.env.BOX_VIEW_DOCUMENTS_URL;
+    }
+    if (process.env.BOX_VIEW_DOCUMENTS_UPLOAD_URL) {
+        client.documentsUploadURL = process.env.BOX_VIEW_DOCUMENTS_UPLOAD_URL;
+    }
+    if (process.env.BOX_VIEW_SESSIONS_URL) {
+        client.sessionsURL = process.env.BOX_VIEW_SESSIONS_URL;
+    }
+    prog.client = client;
 }
 
 function upload(cmd, callback) {
