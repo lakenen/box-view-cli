@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Inspired by grunt-cli completion:
+# https://github.com/gruntjs/grunt-cli/blob/master/completion/bash
+
+# Usage:
+#
+# To enable bash <tab> completion for box-view, add the following line (minus
+# the leading #, which is the bash comment character) to your ~/.bashrc file:
+#
+# eval "$(box-view --completion=bash)"
+
+# Enable bash autocompletion.
+function __box_view_completions() {
+  # The currently-being-completed word.
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  local prev="${COMP_WORDS[COMP_CWORD - 1]}"
+
+  local all_commands="$(box-view options 2>/dev/null)"
+
+  # Options
+  if [ "$prev" == "box-view" ]
+  then
+    COMPREPLY=($(compgen -W "$all_commands" -- "$cur"))
+  else
+    local command_options="$(box-view options --command=$prev 2>/dev/null)"
+    COMPREPLY=($(compgen -W "$command_options" -- "$cur"))
+  fi
+}
+
+complete -o default -F __box_view_completions box-view
