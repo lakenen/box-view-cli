@@ -79,6 +79,10 @@ npm install -g box-view-cli
 
 View is a combination of the upload and session commands, which takes (almost) all the arguments of each. It's magical. Be careful.
 
+```
+box-view view --open --file=/path/to/some/file.pdf --non-svg --downloadable --duration=999999999
+```
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style.
