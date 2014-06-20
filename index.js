@@ -49,6 +49,7 @@ addCommand('help');
 addCommand('options');
 addCommand('upload');
 addCommand('session');
+addCommand('content');
 addCommand('boom');
 
 prog.version(getVersion(), '-v, --version')

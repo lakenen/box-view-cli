@@ -63,6 +63,18 @@ npm install -g box-view-cli
     -o, --open                 open the viewing session URL on success
 ```
 
+### Content
+```
+  Usage: content [options]
+
+  Options:
+
+    -h, --help                   output usage information
+    -i, --document-id [id]       the document ID
+    -e, --extension [extension]  the type of content to request (zip, pdf); if empty, get the original document type
+    -o, --output [file]          the name of the file to output data to
+```
+
 ### Boom
 
 Boom is a combination of the upload and session commands, which takes (almost) all the arguments of each. It's magical. Be careful.
