@@ -75,9 +75,9 @@ npm install -g box-view-cli
     -o, --output [file]          the name of the file to output data to
 ```
 
-### Boom
+### View
 
-Boom is a combination of the upload and session commands, which takes (almost) all the arguments of each. It's magical. Be careful.
+View is a combination of the upload and session commands, which takes (almost) all the arguments of each. It's magical. Be careful.
 
 ## Contributing
 
