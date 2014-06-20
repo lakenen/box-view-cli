@@ -1,6 +1,6 @@
 {
   "name": "box-view-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A CLI for Box View API",
   "author": "Cameron Lakenen <lakenen@box.com>",
   "homepage": "http://github.com/lakenen/box-view-cli",
