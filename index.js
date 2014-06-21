@@ -52,6 +52,7 @@ addCommand('session');
 addCommand('content');
 addCommand('view');
 addCommand('status');
+addCommand('list');
 
 prog.version(getVersion(), '-v, --version')
     .option('-t, --token [token]', 'Box View API Token (default: $BOX_VIEW_API_TOKEN)')
