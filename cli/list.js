@@ -4,7 +4,7 @@ module.exports = function (prog) {
         var options = {};
 
         if (cmd.number) {
-            options.number = cmd.number;
+            options.limit = cmd.number;
         }
         if (cmd.before) {
             options['created_before'] = cmd.expires;
