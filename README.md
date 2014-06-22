@@ -21,16 +21,46 @@ npm install -g box-view-cli
 
   Commands:
 
-    help [command]         output usage information
+    help [options]         output usage information
+    options [options]      output concise command information
     upload [options]       upload a document to the View API
     session [options]      create a viewing session on the View API
-    boom [options]         upload a document and create a session all in one fancy command
+    content [options]      request document content from the View API
+    view [options]         upload a document and create a session all in one fancy command
+    status [options]       request document content from the View API
+    list [options]         request a list of documents from the View API
 
   Options:
 
     -h, --help           output usage information
     -v, --version        output the version number
     -t, --token [token]  Box View API Token (default: $BOX_VIEW_API_TOKEN)
+    --completion [type]  Print shell completion script (types: bash)
+```
+
+### List
+
+```
+  Usage: list [options]
+
+  Options:
+
+    -h, --help            output usage information
+    -n, --number [limit]  the maximum number of documents to request
+    -b, --before [date]   the latest document to request
+    -a, --after [date]    the earliest document to request
+```
+
+### Status
+
+```
+  Usage: status [options]
+
+  Options:
+
+    -h, --help              output usage information
+    -i, --document-id [id]  the document ID
+    --fields [fields]       the fields to request (comma-separated)
 ```
 
 ### Upload
