@@ -10,7 +10,7 @@ module.exports = function (prog) {
             debug('content requested with document id "%s"', cmd.documentId);
             prog.client.documents.getContent(cmd.documentId, extension, function (err, response) {
                 if (err) {
-                    console.error(err);
+                    console.error(err.error);
                 } else {
                     debug('got content (type %s)', extension);
                     debug('writing to file %s', cmd.output);

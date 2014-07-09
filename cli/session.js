@@ -19,7 +19,7 @@ module.exports = function (prog) {
             debug('session requested with document id "%s"', cmd.documentId);
             prog.client.sessions.create(cmd.documentId, options, function (err, res) {
                 if (err) {
-                    console.error(err);
+                    console.error(err.error);
                 } else {
                     console.log(res);
                     if (cmd.open) {

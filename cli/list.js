@@ -15,7 +15,7 @@ module.exports = function (prog) {
 
         prog.client.documents.list(options, function (err, res) {
             if (err) {
-                console.error(err);
+                console.error(err.error);
             } else {
                 console.log(JSON.stringify(res, true, 2));
                 if (typeof callback === 'function') {
