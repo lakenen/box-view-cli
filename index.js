@@ -50,6 +50,7 @@ addCommand('options');
 addCommand('upload');
 addCommand('session');
 addCommand('content');
+addCommand('thumbnail');
 addCommand('view');
 addCommand('status');
 addCommand('list');

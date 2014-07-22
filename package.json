@@ -35,7 +35,7 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "box-view": "^0.1.5",
+    "box-view": "^0.1.8",
     "commander": "^2.2.0",
     "open": "0.0.5"
   },
