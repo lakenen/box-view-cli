@@ -95,6 +95,7 @@ npm install -g box-view-cli
 ```
 
 ### Content
+
 ```
   Usage: content [options]
 
@@ -104,6 +105,20 @@ npm install -g box-view-cli
     -i, --document-id [id]       the document ID
     -e, --extension [extension]  the type of content to request (zip, pdf); if empty, get the original document type
     -o, --output [file]          the name of the file to output data to
+```
+
+### Thumbnail
+
+```
+  Usage: thumbnail [options]
+
+  Options:
+
+    -h, --help              output usage information
+    -i, --document-id [id]  the document ID
+    -o, --output [file]     the name of the file to output data to
+    -w, --width [width]     the desired width of the thumbnail
+    -h, --height [height]   the desired height of the thumbnail
 ```
 
 ### View
