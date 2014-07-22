@@ -90,6 +90,7 @@ npm install -g box-view-cli
     -d, --duration [duration]  the duration (in minutes) of the session
     -e, --expires [expires]    the timestamp at which this session should expire
     -D, --downloadable         allow downloads
+    -T, --disable-text         disable text selection
     -o, --open                 open the viewing session URL on success
 ```
 
