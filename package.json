@@ -1,6 +1,6 @@
 {
   "name": "box-view-cli",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A CLI for Box View API",
   "author": "Cameron Lakenen <lakenen@box.com>",
   "homepage": "http://github.com/lakenen/box-view-cli",
@@ -35,7 +35,7 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "box-view": "^0.4.0",
+    "box-view": "^0.4.1",
     "commander": "^2.2.0",
     "open": "0.0.5"
   },
