@@ -1,13 +1,14 @@
 var path = require('path'),
-    debug = require('../lib/debug');
+    debug = require('../lib/debug'),
+    output = require('../lib/output');
 
 module.exports = function (prog) {
     function createResponseHandler(done) {
         return function (err, res) {
             if (err) {
-                console.error(err.error);
+                output.error(err.error);
             } else {
-                console.log(res);
+                output.log(res);
                 if (typeof done === 'function') {
                     done(res);
                 }
@@ -16,25 +17,33 @@ module.exports = function (prog) {
     }
 
     function requestUpload(cmd, done) {
-        var options = {};
+        var params = {};
 
         if (cmd.name) {
-            options.name = cmd.name;
+            params.name = cmd.name;
         }
         if (cmd.thumbnails) {
-            options.thumbnails = cmd.thumbnails;
+            params.thumbnails = cmd.thumbnails;
         }
         if (cmd.nonSvg) {
-            options['non_svg'] = cmd.nonSvg;
+            params['non_svg'] = cmd.nonSvg;
         }
 
         if (cmd.url) {
             debug('upload requested with URL "%s"', cmd.url);
-            prog.client.documents.uploadURL(cmd.url, options, createResponseHandler(done));
+            prog.client.documents.uploadURL(
+                cmd.url,
+                { params: params, retry: true },
+                createResponseHandler(done)
+            );
         } else if (cmd.file) {
             cmd.file = path.resolve(cmd.file);
             debug('upload requested with file "%s"', cmd.file);
-            prog.client.documents.uploadFile(cmd.file, options, createResponseHandler(done));
+            prog.client.documents.uploadFile(
+                cmd.file,
+                { params: params, retry: true },
+                createResponseHandler(done)
+            );
         } else {
             throw new Error('--file (-f) or --url (-u) option required');
         }

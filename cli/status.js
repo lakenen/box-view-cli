@@ -1,4 +1,5 @@
-var debug = require('../lib/debug');
+var debug = require('../lib/debug'),
+    output = require('../lib/output');
 
 module.exports = function (prog) {
 
@@ -7,11 +8,11 @@ module.exports = function (prog) {
 
         if (cmd.documentId) {
             debug('status requested with document id "%s"', cmd.documentId);
-            prog.client.documents.get(cmd.documentId, fields, function (err, response) {
+            prog.client.documents.get(cmd.documentId, { fields: fields }, function (err, response) {
                 if (err) {
-                    console.error(err.error);
+                    output.error(err.error);
                 } else {
-                    console.log(response);
+                    output.log(response);
                     if (typeof callback === 'function') {
                         callback(response);
                     }

@@ -1,23 +1,24 @@
+var output = require('../lib/output');
 
 module.exports = function (prog) {
     function requestList(cmd, callback) {
-        var options = {};
+        var params = {};
 
         if (cmd.number) {
-            options.limit = cmd.number;
+            params.limit = cmd.number;
         }
         if (cmd.before) {
-            options['created_before'] = cmd.expires;
+            params['created_before'] = cmd.expires;
         }
         if (cmd.after) {
-            options['created_after'] = cmd.after;
+            params['created_after'] = cmd.after;
         }
 
-        prog.client.documents.list(options, function (err, res) {
+        prog.client.documents.list({ params: params }, function (err, res) {
             if (err) {
-                console.error(err.error);
+                output.error(err.error);
             } else {
-                console.log(JSON.stringify(res, true, 2));
+                output.log(JSON.stringify(res, true, 2));
                 if (typeof callback === 'function') {
                     callback(res);
                 }

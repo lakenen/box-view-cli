@@ -1,19 +1,20 @@
 var fs = require('fs'),
-    debug = require('../lib/debug');
+    debug = require('../lib/debug'),
+    output = require('../lib/output');
 
 module.exports = function (prog) {
 
     function requestContent(cmd) {
-        var options = {};
+        var width, height;
 
         if (cmd.width) {
-            options.width = cmd.width;
+            width = cmd.width;
         } else {
             throw new Error('--width (-w) is required');
         }
 
         if (cmd.height) {
-            options.height = cmd.height;
+            height = cmd.height;
         } else {
             throw new Error('--height (-h) is required');
         }
@@ -24,20 +25,26 @@ module.exports = function (prog) {
 
         if (cmd.documentId) {
             debug('thumbnail requested with document id "%s"', cmd.documentId);
-            prog.client.documents.getThumbnail(cmd.documentId, options, function (err, response) {
-                if (err) {
-                    console.error(err.error);
-                } else {
-                    debug('got thumbnail (size %sx%s)', options.width, options.height);
-                    debug('writing to file %s', cmd.output);
-                    var file = fs.createWriteStream(cmd.output);
-                    file.on('finish', function() {
-                        debug('finished writing to file %s', cmd.output);
-                        file.close();
-                    });
-                    response.pipe(file);
+            prog.client.documents.getThumbnail(
+                cmd.documentId,
+                width,
+                height,
+                { retry: true },
+                function (err, response) {
+                    if (err) {
+                        output.error(err.error);
+                    } else {
+                        debug('got thumbnail (size %sx%s)', width, height);
+                        debug('writing to file %s', cmd.output);
+                        var file = fs.createWriteStream(cmd.output);
+                        file.on('finish', function() {
+                            debug('finished writing to file %s', cmd.output);
+                            file.close();
+                        });
+                        response.pipe(file);
+                    }
                 }
-            });
+            );
         } else {
             throw new Error('--document-id (-d) option required');
         }
