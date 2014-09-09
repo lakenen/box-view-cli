@@ -10,7 +10,7 @@ module.exports = function (prog) {
             debug('status requested with document id "%s"', cmd.documentId);
             prog.client.documents.get(cmd.documentId, { fields: fields }, function (err, response) {
                 if (err) {
-                    output.error(err.error);
+                    output.error(err.message || err);
                 } else {
                     output.log(response);
                     if (typeof callback === 'function') {

@@ -18,7 +18,7 @@ module.exports = function (prog) {
                 { extension: extension, retry: true },
                 function (err, response) {
                     if (err) {
-                        output.error(err.error);
+                        output.error(err.message || err);
                     } else {
                         debug('got content (type %s)', extension);
                         debug('writing to file %s', cmd.output);

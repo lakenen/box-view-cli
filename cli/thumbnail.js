@@ -32,7 +32,7 @@ module.exports = function (prog) {
                 { retry: true },
                 function (err, response) {
                     if (err) {
-                        output.error(err.error);
+                        output.error(err.message || err);
                     } else {
                         debug('got thumbnail (size %sx%s)', width, height);
                         debug('writing to file %s', cmd.output);

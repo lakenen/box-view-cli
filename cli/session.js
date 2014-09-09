@@ -26,7 +26,7 @@ module.exports = function (prog) {
                 { params: params, retry: true },
                 function (err, res) {
                   if (err) {
-                      output.error(err.error);
+                      output.error(err.message || err);
                   } else {
                       output.log(res);
                       if (cmd.open) {
