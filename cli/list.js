@@ -18,7 +18,7 @@ module.exports = function (prog) {
             if (err) {
                 output.error(err.message || err);
             } else {
-                output.log(JSON.stringify(res, true, 2));
+                output.log(res);
                 if (typeof callback === 'function') {
                     callback(res);
                 }
