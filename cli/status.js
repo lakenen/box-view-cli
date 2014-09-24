@@ -8,13 +8,13 @@ module.exports = function (prog) {
 
         if (cmd.documentId) {
             debug('status requested with document id "%s"', cmd.documentId);
-            prog.client.documents.get(cmd.documentId, { fields: fields }, function (err, response) {
+            prog.client.documents.get(cmd.documentId, { fields: fields }, function (err, res) {
                 if (err) {
-                    output.error(err.message || err);
+                    output.error(res);
                 } else {
-                    output.log(response);
+                    output.log(res);
                     if (typeof callback === 'function') {
-                        callback(response);
+                        callback(res);
                     }
                 }
             });

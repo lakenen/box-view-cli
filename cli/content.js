@@ -16,9 +16,9 @@ module.exports = function (prog) {
             prog.client.documents.getContent(
                 cmd.documentId,
                 { extension: extension, retry: true },
-                function (err, response) {
+                function (err, res) {
                     if (err) {
-                        output.error(err.message || err);
+                        output.error(res);
                     } else {
                         debug('got content (type %s)', extension);
                         debug('writing to file %s', cmd.output);
@@ -27,7 +27,7 @@ module.exports = function (prog) {
                             debug('finished writing to file %s', cmd.output);
                             file.close();
                         });
-                        response.pipe(file);
+                        res.pipe(file);
                     }
                 }
             );

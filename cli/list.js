@@ -16,7 +16,7 @@ module.exports = function (prog) {
 
         prog.client.documents.list({ params: params }, function (err, res) {
             if (err) {
-                output.error(err.message || err);
+                output.error(res);
             } else {
                 output.log(res);
                 if (typeof callback === 'function') {

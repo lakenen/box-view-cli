@@ -30,9 +30,9 @@ module.exports = function (prog) {
                 width,
                 height,
                 { retry: true },
-                function (err, response) {
+                function (err, res) {
                     if (err) {
-                        output.error(err.message || err);
+                        output.error(res);
                     } else {
                         debug('got thumbnail (size %sx%s)', width, height);
                         debug('writing to file %s', cmd.output);
@@ -41,7 +41,7 @@ module.exports = function (prog) {
                             debug('finished writing to file %s', cmd.output);
                             file.close();
                         });
-                        response.pipe(file);
+                        res.pipe(file);
                     }
                 }
             );
