@@ -85,13 +85,16 @@ npm install -g box-view-cli
 
   Options:
 
-    -h, --help                 output usage information
-    -i, --document-id [id]     the document ID
-    -d, --duration [duration]  the duration (in minutes) of the session
-    -e, --expires [expires]    the timestamp at which this session should expire
-    -D, --downloadable         allow downloads
-    -T, --disable-text         disable text selection
-    -o, --open                 open the viewing session URL on success
+    -h, --help                      output usage information
+    -i, --document-id [id]          the document ID
+    -d, --duration [duration]       the duration (in minutes) of the session
+    -e, --expires [expires]         the timestamp at which this session should expire
+    -D, --downloadable              allow downloads
+    -T, --disable-text              disable text selection
+    -a, --annotations               enable annotations
+    -N, --author-name [authorName]  annotation author name
+    -A, --author-id [authorId]      annotation author id
+    -o, --open                      open the viewing session URL on success
 ```
 
 ### Content

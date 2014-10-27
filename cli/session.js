@@ -3,7 +3,8 @@ var open = require('open'),
     output = require('../lib/output');
 
 module.exports = function (prog) {
-    function requestSession(cmd) {
+
+    function validateParams(cmd) {
         var params = {};
 
         if (cmd.duration) {
@@ -18,6 +19,23 @@ module.exports = function (prog) {
         if (cmd.disableText) {
             params['is_text_selectable'] = false;
         }
+        if (cmd.annotations) {
+            params['is_annotatable'] = true;
+            if (!cmd.authorName) {
+              throw new Error('--author-name (-N) is required when annotations are enabled');
+            }
+            if (!cmd.authorId) {
+              throw new Error('--author-id (-A) is required when annotations are enabled');
+            }
+            params['author_name'] = cmd.authorName || 'Test User';
+            params['author_external_id'] = cmd.authorId || 1;
+        }
+
+        return params;
+    }
+
+    function requestSession(cmd) {
+        var params = validateParams(cmd);
 
         if (cmd.documentId) {
             debug('session requested with document id "%s"', cmd.documentId);
@@ -36,7 +54,7 @@ module.exports = function (prog) {
                 }
             );
         } else {
-            throw new Error('--session-id option required');
+            throw new Error('--session-id (-i) option required');
         }
     }
 
@@ -48,6 +66,9 @@ module.exports = function (prog) {
             ['-e, --expires [expires]', 'the timestamp at which this session should expire'],
             ['-D, --downloadable', 'allow downloads'],
             ['-T, --disable-text', 'disable text selection'],
+            ['-a, --annotations', 'enable annotations'],
+            ['-N, --author-name [authorName]', 'annotation author name'],
+            ['-A, --author-id [authorId]', 'annotation author id'],
             ['-o, --open', 'open the viewing session URL on success']
         ],
         actions: [
