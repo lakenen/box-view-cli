@@ -22,10 +22,10 @@ module.exports = function (prog) {
         if (cmd.annotations) {
             params['is_annotatable'] = true;
             if (!cmd.authorName) {
-              throw new Error('--author-name is required when annotations are enabled');
+              throw new Error('--author-name (-N) is required when annotations are enabled');
             }
             if (!cmd.authorId) {
-              throw new Error('--author-id is required when annotations are enabled');
+              throw new Error('--author-id (-A) is required when annotations are enabled');
             }
             params['author_name'] = cmd.authorName || 'Test User';
             params['author_external_id'] = cmd.authorId || 1;
@@ -54,7 +54,7 @@ module.exports = function (prog) {
                 }
             );
         } else {
-            throw new Error('--session-id option required');
+            throw new Error('--session-id (-i) option required');
         }
     }
 

@@ -15,7 +15,7 @@ function getVersion() {
     return 'box-view-cli@' + cliVersion + '\nbox-view@' + boxViewVersion;
 }
 
-function init() {
+function init(cmd) {
     var client;
     prog.token = prog.token || process.env.BOX_VIEW_API_TOKEN;
     debug('started with token %s', prog.token);
@@ -30,6 +30,8 @@ function init() {
         client.sessionsURL = process.env.BOX_VIEW_SESSIONS_URL;
     }
     prog.client = client;
+    prog.currentCommand = cmd;
+    prog.commandInitialized = true;
 }
 
 function addCommand(name) {
@@ -55,6 +57,13 @@ addCommand('view');
 addCommand('status');
 addCommand('list');
 
+process.on('uncaughtException', function (e) {
+    console.error('Error: ' + e.message);
+    // TODO: come up with a cleaner way to do this
+    require('./cli/help')(prog).help(prog.currentCommand._name);
+});
+
+
 prog.version(getVersion(), '-v, --version')
     .option('-t, --token [token]', 'Box View API Token (default: $BOX_VIEW_API_TOKEN)')
     .option('--completion [type]', 'Print bash completion script')
@@ -70,4 +79,11 @@ if (prog.completion) {
             fs.createReadStream(filename).pipe(process.stdout);
         }
     });
+}
+
+if (!prog.commandInitialized) {
+    if (prog.args.length) {
+        console.error('Unrecognized command ' + prog.args.join(' '));
+    }
+    prog.help();
 }

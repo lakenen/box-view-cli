@@ -16,6 +16,7 @@ module.exports = function (prog) {
         ],
         actions: [
             help
-        ]
+        ],
+        help: help
     };
 };
