@@ -19,7 +19,7 @@ module.exports = function (prog) {
     function requestUpload(cmd, done) {
         var params = {};
 
-        if (cmd.name) {
+        if (typeof cmd.name === 'string') {
             params.name = cmd.name;
         }
         if (cmd.thumbnails) {
