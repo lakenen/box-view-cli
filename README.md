@@ -107,7 +107,7 @@ npm install -g box-view-cli
     -h, --help                   output usage information
     -i, --document-id [id]       the document ID
     -e, --extension [extension]  the type of content to request (zip, pdf); if empty, get the original document type
-    -o, --output [file]          the name of the file to output data to
+    -o, --output [file]          the name of the file to output data to (otherwise stdout)
 ```
 
 ### Thumbnail

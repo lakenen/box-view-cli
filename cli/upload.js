@@ -6,7 +6,7 @@ module.exports = function (prog) {
     function createResponseHandler(done) {
         return function (err, res) {
             if (err) {
-                output.error(res);
+                output.error(res.toString());
             } else {
                 output.log(res);
                 if (typeof done === 'function') {
