@@ -41,7 +41,7 @@ module.exports = function (prog) {
             debug('upload requested with file "%s"', cmd.file);
             prog.client.documents.uploadFile(
                 cmd.file,
-                { params: params, retry: true },
+                { params: params },
                 createResponseHandler(done)
             );
         } else {
